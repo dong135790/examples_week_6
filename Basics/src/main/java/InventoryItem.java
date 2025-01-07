@@ -8,7 +8,7 @@ public class InventoryItem {
      */
     // TODO
 
-    /*
+    /**
      * Constructor.
      */
     public InventoryItem(String item, int quantity) {
