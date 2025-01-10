@@ -1,7 +1,11 @@
 plugins {
     id("java")
+    application
 }
 
+application {
+    mainClass = "PrimitiveTypesDemo"
+}
 group = "org.example"
 version = "1.0-SNAPSHOT"
 
@@ -17,3 +21,4 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
