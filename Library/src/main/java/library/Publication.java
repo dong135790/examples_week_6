@@ -8,5 +8,9 @@ public abstract class Publication implements LibraryItem {
         return pageCount;
     }
 
+    public boolean isCheckedOut() {
+        return false;
+    }
+
 
 }

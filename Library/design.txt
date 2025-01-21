@@ -1,0 +1,11 @@
+LibraryItem: isCheckedOut; checkoutItem, returnItem
+- Publication: pageCount; year
+  - Book: author, ISBN
+  - Magazine: volume
+- Audio
+  - LP: artist, runtime
+  - CD
+- Tool
+  - Hammer
+  - Saw
+
