@@ -1,0 +1,23 @@
+---
+title: Library Management System
+---
+classDiagram
+
+%% Library
+%% - available publications
+%% - available books
+
+%% interface LibraryItem
+%% - isCheckedOut
+%% - checkout
+%% - return
+
+%% abstract Publication implements LibraryItem
+%% - title
+%% - publication date
+
+%% Book extends Publication
+%% - author
+
+%% Magazine extends Publication
+%% - volume
