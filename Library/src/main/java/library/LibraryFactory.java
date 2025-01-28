@@ -3,7 +3,7 @@ package library;
 /**
  * A class to build a new {@link library.Library Library}
  */
-public class LibraryBuilder {
+public class LibraryFactory {
 
     /**
      * Build a "tester" library object.
@@ -18,6 +18,15 @@ public class LibraryBuilder {
         library.addItem(new Book("EB White", "Charlott's Web", 124));
         library.addItem(new Magazine("bon appetit", 75, 19));
         return library;
+    }
+
+    /**
+     * Build a library object from a CSV file.
+     *
+     * @return the Library object constructed
+     */
+    public static Library buildLibraryFromCsv(String filePath) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

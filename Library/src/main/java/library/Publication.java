@@ -22,7 +22,6 @@ public abstract class Publication implements LibraryItem {
         this.isCheckedOut = false; // defaults to false
     }
 
-
     /**
      * Return the title.
      *
@@ -71,6 +70,10 @@ public abstract class Publication implements LibraryItem {
     public String toString() {
         return "Title: " + title
                 + ", PageCount: " + pageCount;
+    }
+
+    public int compareTo(Publication publication) {
+        return this.title.compareTo(publication.title);
     }
 
     /**

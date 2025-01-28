@@ -73,6 +73,30 @@ public class BookDemo {
         return location;
     }
 
+    /**
+     * Getter for author
+     *
+     * @return author
+     */
+    public Name getAuthor() {
+        return author;
+    }
+
+    public int compareTo(BookDemo o) {
+        return this.title.compareTo(o.title);
+    }
+
+    @Override
+    public String toString() {
+        return "BookDemo{" +
+                "title='" + title + '\'' +
+                ", author=" + author +
+                ", bookType=" + bookType +
+                '}';
+    }
+
+
+
     // Used only for some local testing of Book.
     public static void main(String[] args) {
 
