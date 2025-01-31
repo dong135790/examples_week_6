@@ -18,6 +18,8 @@ public class LibraryDriver {
         Library library = LibraryFactory.buildLibrary();
         library.checkoutPublication("Kindred");
         library.checkoutPublication("Wired");
+        int result = library.returnAllItems();
+        System.out.println(result);
 
 //        System.out.println(library.getAvailableBooks());
 //        System.out.println(library.getCheckedOutMagazines());

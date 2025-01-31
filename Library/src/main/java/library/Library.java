@@ -1,11 +1,11 @@
 package library;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 /**
  * A class to store our full library.
@@ -131,11 +131,24 @@ public class Library {
 
         List<LibraryItem> result =
                 items.stream()
-                .filter(predicate)
+                        .filter(predicate)
                         .toList();
-
         return result;
+    }
 
+    public int returnAllItems() {
+//        // Option 1
+//        items.stream().map(i -> i.returnItem()).toList()
+
+        // Option 2
+
+        int result =
+                items.stream() // gives me stream of 7 LibraryItem
+                .map(LibraryItem::returnItem) // gives me stream of 7 booleans
+                .filter(i -> i) // gives me stream of 2 booleans
+                .toList() // list of 2 booleans
+                        .size(); // size of the list
+        return result;
 
     }
 
@@ -149,6 +162,7 @@ public class Library {
         }
         return result.toString();
     }
+
 
     public static void main(String[] args) {
 

@@ -17,6 +17,8 @@ public class LibraryFactory {
         library.addItem(new Magazine("Wired", 56, 10));
         library.addItem(new Book("EB White", "Charlott's Web", 124));
         library.addItem(new Magazine("bon appetit", 75, 19));
+        library.addItem(new Book("Octavia Butler", "Parable of the Sower", 298));
+        library.addItem(new Book("Octavia Butler", "Dawn", 284));
         return library;
     }
 

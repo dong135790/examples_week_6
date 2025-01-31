@@ -3,7 +3,7 @@ package syntaxdemo;
 /**
  * A Book class to demonstrate various Java syntax things.
  */
-public class BookDemo {
+public class BookDemo implements Comparable<BookDemo> {
 
     /**
      * An enum can be used to declare a fixed set of constants.
@@ -14,7 +14,7 @@ public class BookDemo {
     private String title;
     private Name author;
     private BookType bookType;
-
+    private int pageCount;
 
     /**
      * Build a new Book with a given title, author, and type
@@ -22,10 +22,11 @@ public class BookDemo {
      * @param author
      * @param bookType
      */
-    public BookDemo(String title, Name author, BookType bookType) {
+    public BookDemo(String title, Name author, BookType bookType, int pageCount) {
         this.title = title;
         this.author = author;
         this.bookType = bookType;
+        this.pageCount = pageCount;
     }
 
     /**
@@ -82,8 +83,43 @@ public class BookDemo {
         return author;
     }
 
+    public BookType getBookType() {
+        return bookType;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
     public int compareTo(BookDemo o) {
-        return this.title.compareTo(o.title);
+                return this.title.compareTo(o.title);
+
+
+//        if (this.author.last().equals(o.author.last())) {
+//            if (this.author.first().equals(o.author.first())) {
+//                return this.pageCount - o.pageCount;
+//            } else {
+//                return this.author.first().compareTo(o.author.first());
+//            }
+//        } else {
+//            return this.author.last().compareTo(o.author.last());
+//        }
+
+
+//        if (this.title COMES_BEFORE o.title) {
+//
+//        }
+
+//        return this.pageCount - o.pageCount;
+
+//        if (this.pageCount < o.pageCount) {
+//            return -1;
+//        } else if (this.pageCount > o.pageCount) {
+//            return 1;
+//        } else {
+//            return 0;
+//        }
+
     }
 
     @Override
@@ -93,24 +129,6 @@ public class BookDemo {
                 ", author=" + author +
                 ", bookType=" + bookType +
                 '}';
-    }
-
-
-
-    // Used only for some local testing of Book.
-    public static void main(String[] args) {
-
-        BookType type = BookType.HARD_COVER;
-        System.out.println(type.name());
-
-        BookDemo book = new BookDemo(
-                "Kindred",
-                new Name("Octavia", "Butler"),
-                type);
-
-//        System.out.println(book.getLocation());
-
-
     }
 
 }
