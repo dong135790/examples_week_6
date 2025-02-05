@@ -1,6 +1,7 @@
 package library;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 public class LibraryDriver {
@@ -16,10 +17,12 @@ public class LibraryDriver {
     public static void main(String[] args) {
 
         Library library = LibraryFactory.buildLibrary();
-        library.checkoutPublication("Kindred");
-        library.checkoutPublication("Wired");
-        int result = library.returnAllItems();
+        Map<String, List<Book>> result = library.booksByAuthor();
         System.out.println(result);
+//        library.checkoutPublication("Kindred");
+//        library.checkoutPublication("Wired");
+//        int result = library.returnAllItems();
+//        System.out.println(result);
 
 //        System.out.println(library.getAvailableBooks());
 //        System.out.println(library.getCheckedOutMagazines());
@@ -46,18 +49,18 @@ public class LibraryDriver {
 //        List<LibraryItem> results = library.filter(checkedOutMagazines);
 
         // Option 4: pass the function direction into filter
-        List<LibraryItem> checkedOutMagazines = library
-                .filter((item) -> ((item instanceof Magazine m) && (m.isCheckedOut())));
-//        System.out.println(checkedOutMagazines);
-
-
-        List<LibraryItem> availableBooks = library
-                .filter((item) -> ((item instanceof Book) && (!item.isCheckedOut())));
-//        System.out.println(availableBooks);
-
-        List<LibraryItem> longBooks = library
-                .filter((item) -> ((item instanceof Book) && (((Book) item).getPageCount() > 300)));
-        System.out.println(longBooks);
+//        List<LibraryItem> checkedOutMagazines = library
+//                .filter((item) -> ((item instanceof Magazine m) && (m.isCheckedOut())));
+////        System.out.println(checkedOutMagazines);
+//
+//
+//        List<LibraryItem> availableBooks = library
+//                .filter((item) -> ((item instanceof Book) && (!item.isCheckedOut())));
+////        System.out.println(availableBooks);
+//
+//        List<LibraryItem> longBooks = library
+//                .filter((item) -> ((item instanceof Book) && (((Book) item).getPageCount() > 300)));
+//        System.out.println(longBooks);
 
 
 

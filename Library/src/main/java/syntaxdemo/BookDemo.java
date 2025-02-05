@@ -91,8 +91,12 @@ public class BookDemo implements Comparable<BookDemo> {
         return title;
     }
 
+    public int getPageCount() {
+        return pageCount;
+    }
+
     public int compareTo(BookDemo o) {
-                return this.title.compareTo(o.title);
+        return this.title.compareTo(o.title);
 
 
 //        if (this.author.last().equals(o.author.last())) {
@@ -128,6 +132,7 @@ public class BookDemo implements Comparable<BookDemo> {
                 "title='" + title + '\'' +
                 ", author=" + author +
                 ", bookType=" + bookType +
+                ", pageCount=" + pageCount +
                 '}';
     }
 
