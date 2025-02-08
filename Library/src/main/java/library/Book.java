@@ -31,17 +31,17 @@ public class Book extends Publication {
         return author;
     }
 
-    @Override
-    public String toString() {
-
-        // this
-        // super
-
-        String partial = super.toString();
-        return "Author: " + author + ", "
-                + partial;
-        // title and pagecount from Publication
-    }
+//    @Override
+//    public String toString() {
+//
+//        // this
+//        // super
+//
+//        String partial = super.toString();
+//        return "Author: " + author + ", "
+//                + partial;
+//        // title and pagecount from Publication
+//    }
 
     public void read() {
         // TODO: implement this

@@ -17,8 +17,19 @@ public class LibraryDriver {
     public static void main(String[] args) {
 
         Library library = LibraryFactory.buildLibrary();
-        Map<String, List<Book>> result = library.booksByAuthor();
-        System.out.println(result);
+        CardHolder holder = library.getUser("Hiromi Berket");
+        System.out.println(holder);
+        library.checkoutPublication("Kindred", holder);
+        System.out.println(library);
+        System.out.println(holder);
+
+        library.returnPublication("Kindred", holder);
+        System.out.println(library);
+        System.out.println(holder);
+
+
+//        Map<String, List<Book>> result = library.booksByAuthor();
+//        System.out.println(result);
 //        library.checkoutPublication("Kindred");
 //        library.checkoutPublication("Wired");
 //        int result = library.returnAllItems();

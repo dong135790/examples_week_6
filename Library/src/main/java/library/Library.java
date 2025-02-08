@@ -1,5 +1,6 @@
 package library;
 
+import javax.smartcardio.Card;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -13,12 +14,14 @@ import static java.util.stream.Collectors.*;
 public class Library {
 
     private List<LibraryItem> items;
+    private List<CardHolder> users;
 
     /**
      * Construct a new, empty Library.
      */
     public Library() {
         items = new ArrayList<>();
+        users = new ArrayList<>();
     }
 
     /**
@@ -36,7 +39,7 @@ public class Library {
      * @param title title of the publication
      * @return true if successful
      */
-    public boolean checkoutPublication(String title) {
+    public boolean checkoutPublication(String title, CardHolder holder) {
 
         LibraryItem found = null;
         for (LibraryItem item : items) {
@@ -49,7 +52,8 @@ public class Library {
         if (found == null || found.isCheckedOut()) {
             return false;
         }
-        return found.checkoutItem();
+        holder.addCheckedOutItem(found);
+        return found.checkoutItem(holder);
     }
 
     /**
@@ -136,22 +140,83 @@ public class Library {
         return result;
     }
 
-    public int returnAllItems() {
-//        // Option 1
-//        items.stream().map(i -> i.returnItem()).toList()
+//    public int returnAllItems() {
+////        // Option 1
+////        items.stream().map(i -> i.returnItem()).toList()
+//
+//        // Option 2
+//
+//        int result =
+//                items.stream() // gives me stream of 7 LibraryItem
+//                .map(LibraryItem::returnItem) // gives me stream of 7 booleans
+//                .filter(i -> i) // gives me stream of 2 booleans
+//                .toList() // list of 2 booleans
+//                        .size(); // size of the list
+//        return result;
+//
+//    }
+//
+    /*
+    mydict = {}
+    mydict[a] = [1, 2, 3] // map.put(a, b)
+    mydict[a].append(4)
+    mydict[a] // map.get(a)
+     */
 
-        // Option 2
 
-        int result =
-                items.stream() // gives me stream of 7 LibraryItem
-                .map(LibraryItem::returnItem) // gives me stream of 7 booleans
-                .filter(i -> i) // gives me stream of 2 booleans
-                .toList() // list of 2 booleans
-                        .size(); // size of the list
+    /*
+
+Map<String, List<Book>> result =
+        items.stream()
+                .filter(Book.class::isInstance)
+                .map(Book.class::cast)
+                .collect(Collectors.groupingBy(Book::getAuthor));
+return result;
+     */
+
+    public Map<String, List<Book>> booksByAuthor() {
+
+        Map<String, List<Book>> result = new HashMap<>();
+        for (LibraryItem item : items) {
+            if(item instanceof Book b) {
+                result.computeIfAbsent(b.getAuthor(), k -> new ArrayList<>())
+                        .add(b);
+//                String author = b.getAuthor();
+//                List<Book> bookList = result.get(author);
+//                if (bookList == null) {
+//                    bookList = new ArrayList<>();
+//                    bookList.add(b);
+//                    result.put(author, bookList);
+//                } else {
+//                    bookList.add(b);
+////                    result.put(author, bookList); // not necessary!
+//                }
+
+            }
+        }
         return result;
-
     }
 
+    public void addUser(String name, int age) {
+        CardHolder holder = new CardHolder(name, age);
+        users.add(holder);
+    }
+
+    public CardHolder getUser(String name) {
+        return users.stream()
+                .filter(user -> user.getName().equals(name))
+                .findFirst().orElse(null);
+    }
+
+    public boolean returnPublication(String title, CardHolder holder) {
+        LibraryItem found =  items.stream()
+                .filter(i -> i instanceof  Publication p && p.getTitle().equals(title))
+                .findFirst().orElse(null);
+        if (found != null && found.isCheckedOut()) {
+            return found.returnItem(holder);
+        }
+        return false;
+    }
 
     @Override
     public String toString() {
