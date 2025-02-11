@@ -17,7 +17,7 @@ public class Widget {
     public String getWord() {
         return word;
     }
-
+    // ho
     public void setNumber(int number) {
         this.number = number;
     }
